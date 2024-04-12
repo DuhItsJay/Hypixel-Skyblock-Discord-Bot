@@ -1,0 +1,126 @@
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>UXPROTOTYPE</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+		<header class="header">
+			<div>
+				<h1>Stats for: DiamantesHandle</h1>
+				<br />
+				<h3 class="profile">Profile: Cucumber</h3>
+			</div>
+		</header>
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<main class="stats">
+			<form class="skills">
+				<section>
+					<fieldset>
+						<div class="sinfo">
+							<h2>Skill Information</h2>
+						</div>
+						<div class="tinfo">
+							<p>Combat 50</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="65">2,517,798 / 4,300,000 XP</div>
+							</div>
+							<p>Alchemy 50</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="100">1,432,854 XP</div>
+							</div>
+							<p>Mining 49</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="15">754,597 / 4,000,000 XP</div>
+							</div>
+							<p>Enchanting 60</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="100">14,553,125 XP</div>
+							</div>
+							<p>Farming 33</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="20">316,369 / 1,600,000 XP</div>
+							</div>
+							<p>Foraging 32</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="45">627,105 / 1,500,000 XP</div>
+							</div>
+							<p>Fishing 33</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="75">1,158,697 / 1,600,000 XP</div>
+							</div>
+							<p>Carpentry 28</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="55">610,600 / 1,100,000 XP</div>
+							</div>
+							<p>Runecrafting 25</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="100">151,715 XP</div>
+							</div>
+							<p>Catacombs 31</p>
+							<div class="progress bar">
+								<div class="progress-done" data-done="53">151,715 XP</div>
+							</div>
+						</div>
+					</fieldset>
+				</section>
+				<script>
+					const table = document.getElementsByClassName('tinfo')
+					const progress_bars = table[0].getElementsByClassName('progress bar')
+					const progress = document.querySelector('.progress-done')
+
+					for (i = 0; i < progress_bars.length; i++) {
+						let a = progress_bars[i].getElementsByClassName('progress-done')
+
+						a[0].style = progress
+						a[0].style['width'] = a[0].getAttribute('data-done') + '%'
+						a[0].style['opacity'] = 1
+					}
+				</script>
+				<canvas id="skin_container"></canvas>
+				<script src="./skinview3d-master/bundles/skinview3d.bundle.js"></script>
+				<script>
+					const skinParts = ['head', 'body', 'rightArm', 'leftArm', 'rightLeg', 'leftLeg']
+					const skinLayers = ['innerLayer', 'outerLayer']
+
+					let skinViewer
+					let orbitControl
+					let rotateAnimation
+					let primaryAnimation
+
+					function reloadSkin() {
+						skinViewer
+							.loadSkin('./DuhItsJay.png', 'default')
+							.then(() => input.setCustomValidity(''))
+							.catch(e => {
+								input.setCustomValidity("Image can't be loaded.")
+								console.error(e)
+							})
+					}
+
+					function initializeViewer() {
+						skinViewer = new skinview3d.SkinViewer({
+							canvas: document.getElementById('skin_container'),
+							alpha: true,
+						})
+						orbitControl = skinview3d.createOrbitControls(skinViewer)
+						orbitControl.rotateAnimation = null
+
+						skinViewer.animations.add(skinview3d.IdleAnimation)
+
+						skinViewer.width = 475
+						skinViewer.height = 900
+						for (const part of skinParts) {
+							skinViewer.playerObject.skin[part]['innerLayer'].visible
+						}
+						reloadSkin()
+					}
+
+					initializeViewer()
+				</script>
+			</form>
+		</main>
+	</body>
+</html>

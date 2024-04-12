@@ -1,0 +1,54 @@
+---
+## ASTRALSBOT
+---
+
+Rewrite ./generators in apiweb
+Rewrite ./constants in utils
+Rewrite ./jobs in apiweb
+Add code to incorporate permissions for staff commands
+staff commands (defaultPermissions: false)
+check if all files in ./tickets directory work as they should
+rewrite guild application
+guild handler
+channel handler
+member handler
+message handler => chat triggers
+move join/leave logs to member handler
+check ticketsystem
+updatebazaar
+rewrite updateauctions
+include lore and texture url into auction and bazaar db formats
+rewrite some datacrunch functions
+server handler
+add more redis functions to RedisManager
+add api key cycle
+improve APIManager - StateHandler
+add more information to bot logs
+
+---
+
+## BRIDGEBOT
+
+---
+
+slash commands
+new commands?
+link with mainbot maybe
+auto invites, auto kicks
+rewrite code for getting g online cause it's so bad
+
+---
+
+## MUSICBOT
+
+---
+
+we all agree it's shit
+
+---
+
+## FRAGBOT (lol forgot about this)
+
+---
+
+frag bot when :<<<<<<<<<<<<<<<<<<<<<<<<

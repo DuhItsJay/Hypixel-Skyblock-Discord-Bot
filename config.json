@@ -1,0 +1,8 @@
+{
+	"TOKEN": "TOKEN",
+	"CLIENT_ID": "ID",
+	"GUILD_ID": "ID",
+	"BOT_LOGS": "ID",
+	"SUGGESTIONS": "ID",
+	"REPORTS": "ID"
+}

@@ -1,0 +1,69 @@
+const DiscordCommand = require('../../contracts/DiscordCommand')
+const Discord = require('discord.js')
+const datacrunch = require('../../utils/datacrunch')
+
+class Auctions extends DiscordCommand {
+	constructor(discord) {
+		super(discord)
+
+		this.discord = discord
+
+		this.data = {
+			name: 'ahstats',
+			description: 'Get auction statistics for the specified item',
+			options: [
+				{
+					name: 'itemname',
+					description: 'name for the item you are looking for',
+					type: 3,
+					autocomplete: true,
+					required: true,
+				},
+			],
+		}
+	}
+
+	onCommand(interaction) {
+		let id = interaction.options.get('itemname').value
+
+		id = id.split(' ').join('_').toString().toUpperCase()
+
+		this.discord.redisGET().HMGET('auctions', id, (err, reply) => {
+			if (reply == null)
+				return this.discord.onBroadcastMessage(`There was an error processing your request! Make sure you have entered the correct item.`, interaction)
+
+			const item = JSON.parse(reply)
+			const sales = item.sales.map(i => i.price)
+
+			const stats = {
+				average: datacrunch.getAverage(sales).toFixed(0),
+				median: datacrunch.getMedian(sales).toFixed(0),
+				min: Math.min(...sales).toFixed(0),
+				max: Math.max(...sales).toFixed(0),
+				mode: datacrunch.getMode(sales).toFixed(0),
+				mean: datacrunch.getMean(sales).toFixed(0),
+			}
+
+			const embed = new Discord.MessageEmbed()
+				.setTitle(item.auction.name)
+				.setURL(`https://auctions.craftlink.xyz/items/${item.auction.id}`)
+				.setDescription(`**Note**: Auction house data is updated **~5** minutes.`)
+				.setColor('9A48BB')
+				.setFields(
+					{ name: 'Average', value: `${datacrunch.numberWithCommas(stats.average)} [**${datacrunch.abbreviateNumber(stats.average)}**]`, inline: true },
+					{ name: 'Mean', value: `${datacrunch.numberWithCommas(stats.mean)} [**${datacrunch.abbreviateNumber(stats.mean)}**]`, inline: true },
+					{ name: 'Min', value: `${datacrunch.numberWithCommas(stats.min)} [**${datacrunch.abbreviateNumber(stats.min)}**]`, inline: true },
+					{ name: 'Median', value: `${datacrunch.numberWithCommas(stats.median)} [**${datacrunch.abbreviateNumber(stats.median)}**]`, inline: true },
+					{ name: 'Max', value: `${datacrunch.numberWithCommas(stats.max)} [**${datacrunch.abbreviateNumber(stats.max)}**]`, inline: true },
+					{ name: 'Mode', value: `${datacrunch.numberWithCommas(stats.mode)} [**${datacrunch.abbreviateNumber(stats.mode)}**]`, inline: true }
+				)
+				.setFooter({ text: 'Much love to Nariah!' })
+				.setTimestamp()
+				.setThumbnail('https://earlsribpalace.com/wp-content/uploads/2019/07/coming-soon-store-placeholder-image.gif')
+
+			this.discord.onBroadcastEmbed(embed, interaction)
+		})
+	}
+}
+
+module.exports = Auctions

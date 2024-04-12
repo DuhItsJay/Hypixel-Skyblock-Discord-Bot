@@ -1,0 +1,116 @@
+{
+	"skills": {
+		"skill_average": 0,
+		"weight": 0,
+		"weight_overflow": 0,
+		"skills": {
+			"mining": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"foraging": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"enchanting": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"farming": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"combat": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"fishing": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"alchemy": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"taming": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 }
+		}
+	},
+	"dungeons": {
+		"selected_class": "",
+		"weight": 0,
+		"weight_overflow": 0,
+		"secrets_found": 0,
+		"classes": {
+			"healer": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"mage": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"berserker": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"archer": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 },
+			"tank": { "level": 0, "experience": 0, "weight": 0, "weight_overflow": 0 }
+		},
+		"types": {
+			"catacombs": {
+				"level": 0,
+				"experience": 0,
+				"weight": 0,
+				"weight_overflow": 0,
+				"highest_tier_completed": "",
+				"times_played": "",
+				"tier_completions": "",
+				"best_score": "",
+				"fastest_time": "",
+				"fastest_time_s_plus": "",
+				"mobs_killed": "",
+				"most_mobs_killed": "",
+
+				"master_mode": {
+					"highest_tier_completed": 0,
+					"tier_completions": "",
+					"best_score": "",
+					"fastest_time": "",
+					"fastest_time_s_plus": "",
+					"mobs_killed": "",
+					"most_mobs_killed": ""
+				}
+			}
+		}
+	},
+	"slayers": {
+		"total_coins_spent": 0,
+		"total_experience": 0,
+		"weight": 0,
+		"weight_overflow": 0,
+		"bosses": {
+			"zombie": {
+				"level": 0,
+				"experience": 0,
+				"weight": 0,
+				"weight_overflow": 0,
+				"kills": {
+					"tier_1": 0,
+					"tier_2": 0,
+					"tier_3": 0,
+					"tier_4": 0,
+					"tier_5": 0
+				}
+			},
+			"spider": {
+				"level": 0,
+				"experience": 0,
+				"weight": 0,
+				"weight_overflow": 0,
+				"kills": {
+					"tier_1": 0,
+					"tier_2": 0,
+					"tier_3": 0,
+					"tier_4": 0,
+					"tier_5": 0
+				}
+			},
+			"wolf": {
+				"level": 0,
+				"experience": 0,
+				"weight": 0,
+				"weight_overflow": 0,
+				"kills": {
+					"tier_1": 0,
+					"tier_2": 0,
+					"tier_3": 0,
+					"tier_4": 0,
+					"tier_5": 0
+				}
+			},
+			"enderman": {
+				"level": 0,
+				"experience": 0,
+				"weight": 0,
+				"weight_overflow": 0,
+				"kills": {
+					"tier_1": 0,
+					"tier_2": 0,
+					"tier_3": 0,
+					"tier_4": 0,
+					"tier_5": 0
+				}
+			}
+		}
+	}
+}
